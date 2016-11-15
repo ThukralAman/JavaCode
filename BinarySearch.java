@@ -22,10 +22,10 @@ public class BinarySearch {
 				break;
 			}
 			else if( searchNum < num[mid] ) {
-				high = mid;
+				high = mid-1;
 			}
 			else {
-				low = mid;
+				low = mid+1;
 			}
 		}	
 		
