@@ -14,9 +14,6 @@ public class LinkedList {
 			this.data = data;
 		}
 		
-		Node() {
-		}
-		
 	}
 	void printLinkedList() {
 		Node temp = this.head;
@@ -109,15 +106,6 @@ public class LinkedList {
 	
 	
 	
-	boolean detectLoopInLinkedList() {
-		Node sPtr = head,
-		fPtr = head;
-		
-		
-	}
-	
-	
-	
 	
 	public static void main(String args[]) {
 		LinkedList linkList = new LinkedList();
@@ -136,3 +124,9 @@ public class LinkedList {
 }
 
 
+class LinkedListQuestions1 {
+	public static void main(String args[]) {
+		LinkedList ll = new LinkedList();
+		ll.head = new Node(20);
+	}
+}
