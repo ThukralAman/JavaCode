@@ -11,9 +11,9 @@ import java.util.Scanner;
 public class Heap {
 	int num[];
 	int heapSize;
-	// int num[] = {33, 2, 98, 79, 104, 65, 56, 7, 43, 28};
-	// int num[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	// int heapSize = num.length;
+	//int num[] = {33, 2, 98, 79, 104, 65, 56, 7, 43, 28};
+	//int num[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	//int heapSize = num.length;
 	Utils utils = new Utils();
 
 	Heap(int num[]) {
@@ -83,29 +83,26 @@ public class Heap {
 	}
 
 	/*
-	 * Time complexity of max heap creation = O(n) Number of nodes at level h =
-	 * (N / ( 2^(H+1) ) ) where leaves have height=0, their parents have height
-	 * h=1
+	 * Time complexity of max heap creation = O(n)
+	 * Number of nodes at level h =  (N / ( 2^(H+1) ) ) where leaves have height=0, their parents have height h=1
 	 * 
-	 * see: https://www.youtube.com/watch?v=HI97KDV23Ig Now time complexity =
-	 * summation from h=1 to h=H ( ( n/(2^(h+1)) ) * O(h) ) = summation from h=1
-	 * to h=H ( ( n/(2^h*2) ) * ch ) = summation from h=1 to h=H ( ( n/(2^(h+1))
-	 * ) * O(h) )
+	 * see: https://www.youtube.com/watch?v=HI97KDV23Ig
+	 * Now time complexity  = summation from h=1 to h=H ( ( n/(2^(h+1)) ) * O(h) )
+	 * 						= summation from h=1 to h=H ( ( n/(2^h*2) ) * ch )
+	 * 						= summation from h=1 to h=H ( ( n/(2^(h+1)) ) * O(h) )
 	 * 
 	 * Also see Keep Notes
 	 * 
 	 */
 
-	/* Heap array goes from 0..n-1 & n=total number of elements */
+	/*Heap array goes from 0..n-1 & n=total number of elements */
 
-	/*
-	 * Algo: 1) Since heapify bears the responsibility of heapifying the given
-	 * index and any associated child index if affected 2) So in create heap we
-	 * start from first non leaf node and call heapify from that index down to
-	 * zero. 3) We start from first non-eaf node because all leaf nodes are
-	 * already following heap property and dont need to be heapified.
+	/* Algo:
+	 * 1) Since heapify bears the responsibility of heapifying the given index and any associated child index if affected
+	 * 2) So in create heap we start from first non leaf node and call heapify from that index down to zero.
+	 * 3) We start from first non-eaf node because all leaf nodes are already following heap property and dont need to be heapified.
 	 *
-	 */
+	 * */
 	public void createHeap() {
 		int n = heapSize;
 		for (int i = ((n / 2) - 1); i >= 0; i--) {
@@ -114,10 +111,13 @@ public class Heap {
 	}
 
 	/*
-	 * Algo: 1) create heap out of given unsorted arry 2) Replace num[0] with
-	 * num[n-1] 3) Reduce heap size by 1. heapSize = heapSize-1 4) heapify index
-	 * -> 0 (O(log(n))) 5) go to step 2)
-	 */
+	Algo:
+	1) create heap out of given unsorted arry
+	2) Replace num[0] with num[n-1]
+	3) Reduce heap size by 1. heapSize = heapSize-1
+	4) heapify index -> 0 (O(log(n)))
+	5) go to step 2)
+	  */
 	public void heapSort() {
 		createHeap();
 		while (heapSize > 0) {
@@ -128,9 +128,12 @@ public class Heap {
 	}
 
 	/*
-	 * Algo: 1) Max = heap[0] 2) swap index 0 with heapSize-1. 3) Reduce size of
-	 * array by 1 4) Heapify heap for i=0
-	 */
+	* Algo:
+	* 1) Max = heap[0]
+	* 2) swap index 0 with heapSize-1.
+	* 3) Reduce size of array by 1
+	* 4) Heapify heap for i=0
+	* */
 	public int extractMax() {
 		int max = num[0];
 		utils.swap(num, 0, (num.length - 1));
@@ -167,15 +170,15 @@ public class Heap {
 	}
 
 	/*
-	 * Time complexity of heapify = O(logn) Space complexity: O(logn) Note n =
-	 * number of nodes in subtree where i is the root 1. Heapify function
-	 * converts the given index to heap property 2. In this process if it finds
-	 * that it swaps some value at child index, then it also heapifies the
-	 * swapping index 3. It heapifies the swapping child index assuming that the
-	 * swapping index was also a heap.
+	 * Time complexity of heapify = O(logn)
+	 * Space complexity: O(logn)
+	 * Note n = number of nodes in subtree where i is the root
+	 * 1. Heapify function converts the given index to heap property
+	 * 2. In this process if it finds that it swaps some value at child index, then it also heapifies the swapping index
+	 * 3. It heapifies the swapping child index assuming that the swapping index was also a heap.
 	 *
 	 * Improvement TO DO: can avoid passing int[] to heapify
-	 */
+	 * */
 	public void heapify(int num[], int i, int n) {
 		int largest = i, l = 2 * i + 1, r = 2 * i + 2;
 
