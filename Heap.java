@@ -116,7 +116,9 @@ public class Heap {
 	2) Replace num[0] with num[n-1]
 	3) Reduce heap size by 1. heapSize = heapSize-1
 	4) heapify index -> 0 (O(log(n)))
-	5) go to step 2)
+	5) go to step 2) until heapSize = 0 
+	
+	Complexity: Step 5 loops n times and heapify in it takes O(logn) time. Also step 1 takes O(n) time. So complexity = O(nlog(n))
 	  */
 	public void heapSort() {
 		createHeap();
