@@ -6,6 +6,9 @@ import java.util.Scanner;
  *  - Can be represented in array with:
  *	- parent i=0, child1 = (2*i+1) child2 =(2*i+2)
  *
+ *
+ * - If in a max heap changing value (say DECREASING value) of any node affects its heap property for children, then call HEAPIFY on that node
+ * - If in a max heap changing value (say INCREASING value) of any node affects its heap property for parent, then call recursively check for parent and swap till root.
  * */
 
 public class Heap {
@@ -60,6 +63,23 @@ public class Heap {
 		System.out.println();
 		h4.heapSort();
 		h4.printArray();
+		
+		Heap h5 = new Heap(new int[] { 33, 2, 98, 79, 104, 65, 56, 7, 43, 28 });
+		h5.createHeap();
+		System.out.println("Finding min element in MAX HEAP");
+		System.out.println();
+		int minElement = h5.findMinInMaxHeap();
+		h5.printArray();
+		System.out.println("minElement in max heap = " + minElement);
+		
+		Heap h6 = new Heap(new int[] { 33, 2, 98, 79, 104, 65, 56, 7, 43, 28 });
+		h6.createHeap();
+		System.out.println("Deleting nth index of heap");
+		h6.printHeapArray();
+		System.out.println();
+		h6.deleteNthNode(1);
+		h6.printHeapArray();
+		
 	}
 
 	public void printHeapArray() {
@@ -84,12 +104,15 @@ public class Heap {
 
 	/*
 	 * Time complexity of max heap creation = O(n)
-	 * Number of nodes at level h =  (N / ( 2^(H+1) ) ) where leaves have height=0, their parents have height h=1
+	 * Number of nodes at  given height h  =  (N / ( 2^(H+1) ) ) where leaves have height=0, their parents have height h=1
 	 * 
 	 * see: https://www.youtube.com/watch?v=HI97KDV23Ig
 	 * Now time complexity  = summation from h=1 to h=H ( ( n/(2^(h+1)) ) * O(h) )
 	 * 						= summation from h=1 to h=H ( ( n/(2^h*2) ) * ch )
-	 * 						= summation from h=1 to h=H ( ( n/(2^(h+1)) ) * O(h) )
+	 * 						= (cn/2) summation from h=1 to h=H (  1/(2^h*)  * ch ) // Taking out constant n and c and 2
+	 * 						 = cn/2 * (1/2 + 2/4 + 3/8 + 4/16 + ..) 
+	 * 						 = cn/2 * 2
+	 * 
 	 * 
 	 * Also see Keep Notes
 	 * 
@@ -168,6 +191,34 @@ public class Heap {
 			return;
 		}
 		num[i] = key;
+		heapify(num, i, heapSize);
+	}
+	
+	/*
+	 * Minimum element in max heap will be one of the elements on leaf node.
+	 * So traverse from n/2 to n and find min
+	 */
+	public int findMinInMaxHeap() {
+		int min = Integer.MAX_VALUE;
+		for(int i=heapSize/2; i<heapSize; i++) {
+			if(min > num[i]) {
+				min = num[i];
+			}
+		}
+		System.out.println("Minimum element in max heap is  " + min );
+		return min;
+	}
+	
+	public void deleteNthNode(int i) {
+		if(i >= heapSize) {
+			System.out.println("Index out of bound");
+		}
+		
+		int temp = num[i];
+		System.out.println("Deleting location = " + i + " and its value =  " + temp);
+		
+		utils.swap(num, i, heapSize-1);
+		heapSize -= 1;
 		heapify(num, i, heapSize);
 	}
 
