@@ -21,9 +21,4 @@ public class CreateThreadAnonymousClass {
 		System.out.println("main end");
 	}
 
-	private static void run() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
