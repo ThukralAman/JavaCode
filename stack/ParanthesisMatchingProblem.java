@@ -6,6 +6,8 @@ package stack;
  *  will not match closing parenthesis type 
  * 
  * 
+ * 
+ * Given index of opening parenthesis find closing parenthesis index
  */
 
 import java.util.Stack;
