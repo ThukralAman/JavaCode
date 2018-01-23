@@ -1,7 +1,5 @@
 package multithreading;
 
-import javaPrograms.LearnThread;
-
 public class CreateThreadPart1 implements Runnable {
 
 	public static void main(String[] args) {

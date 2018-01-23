@@ -37,8 +37,6 @@ public class StackUsinglinkedList {
 		}
 	}
 	
-	
-
 	public static void main(String[] args) {
 		StackUsinglinkedList st = new StackUsinglinkedList();
 		if(st.top == null) {

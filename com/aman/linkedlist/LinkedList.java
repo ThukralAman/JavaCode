@@ -6,6 +6,7 @@ public class LinkedList {
 
 	Node head;
 	
+	/*This is declared static because if it remains instance member then, its object can't be created in main method whhich is static as we cannot call non-static member in static member*/
 	public static class Node {
 		int data;
 		Node next;
@@ -119,7 +120,6 @@ public class LinkedList {
 		linkList.printLinkedList();
 		linkList.addNodeAtPosition(21, 80);
 		linkList.printLinkedList();
-		
 	}
 }
 
