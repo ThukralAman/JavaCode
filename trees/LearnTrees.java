@@ -11,6 +11,14 @@ class BinaryTreeNode {
 		this.data = data;
 		left=right=null;
 	}
+	
+	public boolean hasLeft() {
+		return this.left !=null ? true : false;  
+	}
+	
+	public boolean hasRight() {
+		return this.right !=null ? true : false;  
+	}
 }
 
 class BinaryTree {
