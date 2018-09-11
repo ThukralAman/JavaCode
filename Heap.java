@@ -2,6 +2,11 @@ import java.util.Scanner;
 
 /* 
  * 
+ * **What is Heap**: Its a tree based data structure which follows the Heap Property. Heap property states that parent P will either be greater than all
+ * its children (max heap) or will be smaller than all its children (Min Heap)
+ * 
+ * In heap data structure there is ordering on parent child relationship but there is NO ORDERING on sibling or cousins of a node
+ 
  * Property(Max Heap): Parent is always greater than its child + tree is almost complete binary tree with leaves being added from left most node
  *  - Can be represented in array with:
  *	- parent i=0, child1 = (2*i+1) child2 =(2*i+2)
